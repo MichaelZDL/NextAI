@@ -13,6 +13,7 @@ using System.Collections;
 
 public class AIController : MonoBehaviour, IPropagator
 {
+
 	[SerializeField]
 	float _value;
 	public float Value { get{ return _value; } }
