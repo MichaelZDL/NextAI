@@ -3,12 +3,15 @@ using System.Collections;
 
 public class AIAttack : MonoBehaviour {
 
+    public GameObject shellPrefabs;
     public float AttackAbility =10;
     public float AttackTimeInterval = 1f;
     private float timer;
+    private Transform shootPoint;
+    
 	// Use this for initialization
 	void Start () {
-	
+        shootPoint = transform.Find("ShootPoint");
 	}
 
 
@@ -17,7 +20,9 @@ public class AIAttack : MonoBehaviour {
             timer += Time.deltaTime;
             if (timer >= AttackTimeInterval) {
                 timer -= AttackTimeInterval;
-                col.GetComponent<Health>().TakeDamage(AttackAbility);
+                GameObject.Instantiate(shellPrefabs, shootPoint.position, shootPoint.rotation);
+
+                //col.GetComponent<Health>().TakeDamage(AttackAbility);
             }
         }
     }
